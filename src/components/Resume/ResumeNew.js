@@ -2,14 +2,14 @@ import React, { useState, useEffect } from "react";
 import { Container, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Particle from "../Particle";
-import pdf from "../../Assets/../Assets/CVDocSK.pdf";
+import pdf from "../../Assets/../Assets/CVDoc_SamirKundur.pdf";
 import { AiOutlineDownload } from "react-icons/ai";
 import { Document, Page, pdfjs } from "react-pdf";
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
 const resumeLink =
-  "https://raw.githubusercontent.com/soumyajit4419/portfolio/master/src/Assets/Soumyajit_Behera-BIT_MESRA.pdf";
+  "https://raw.githubusercontent.com/SamirKundur/SamirKundur.github.io/main/src/Assets/CVDoc_SamirKundur.pdf";
 
 function ResumeNew() {
   const [width, setWidth] = useState(1200);
@@ -31,7 +31,9 @@ function ResumeNew() {
 
         <Row className="resume">
           <Document file={resumeLink}>
-            <Page pageNumber={1} scale={width > 786 ? 1.7 : 0.6} />
+              {[1,2,3].map(page => (
+                <Page pageNumber={page} scale={width > 786 ? 1.5 : 0.6}/>
+            ))}
           </Document>
         </Row>
 
